@@ -1,0 +1,175 @@
+% Здесь выбираются необходимые графы, documentclass=eskdtext
+\documentclass[
+  utf8,
+  14pt,
+  russian,
+  hpadding=10mm,
+  vpadding=12mm,
+  floatsection,
+  columnxxxi,
+  columnxxxii,
+  columnxxvi,
+  equationsection,
+  pointsection,
+  footnoteasterisk
+]{eskdtext}
+\usepackage{fontspec}
+
+% Что бы работал eskdx и некоторые другие пакеты LaTeX
+\usepackage{xecyr}
+
+% Межстрочный интервал - 1.5
+\usepackage{setspace}
+\onehalfspacing
+
+% Отступ в начале абзаца - 1.25
+\setlength{\parindent}{1.25cm}
+\usepackage{indentfirst}
+
+% кликабельные источники и содержание
+\usepackage{hyperref}
+% заменить на 
+% \usepackage[pdfusetitle,hidelinks]{hyperref}
+% в production сборке
+
+% Списки
+\usepackage{enumitem}
+\usepackage{calc}% используется для сложения длин
+\setlist[itemize]{%
+  leftmargin=0pt, % согласно ГОСТ, вторая строка элемента списка должна
+% начинаться без абзацного отступа.
+% Отступ первой строки от левого края будет равен: абз. отступ + ' -- '.
+% Хочу заметить, что это результат не совсем точный, но выглядит неплохо.
+% (другого способа настроить нужный отступ не нашел. ¯\_(ツ)_/¯). TODO.
+  itemindent={\the\parindent + \widthof{\ --\ }},
+  itemsep=0cm, % лол, не знаю что это;
+  nolistsep, % убираем большие скачки по вертикали;
+  label=--% используем короткое тире вместо bullets.
+}
+\setlist[enumerate]{%
+% Итоговый отступ элемента от левого края будет: 1.5cm + ширина ' 1) '.
+% В результате на элементе из двух цифр, типа '10)', может вылезти за края 😨.
+  leftmargin=0pt,
+  itemindent={\the\parindent + \widthof{\ 1)\ }},
+  itemsep=0cm,
+  nolistsep,
+  label={\arabic*)}%
+}
+
+% Настройка заголовков
+\usepackage[raggedright,explicit]{titlesec}
+
+\titleformat{name=\section}[block]
+{\bfseries}%
+{\hspace{1.25cm}\thesection}
+{\widthof{\ \ }}
+{\MakeUppercase{#1}}
+
+\titleformat{name=\section,numberless}[block]
+{\bfseries\centering}
+{}
+{0pt}
+{\MakeUppercase{#1}}
+
+\titleformat{\subsection}[block]
+{\bfseries}% жирный шрифт
+{\hspace{1.25cm}\thesubsection}% label
+{\widthof{\ \ }}% два пробела между номером и названием подраздела
+{#1}% before-code
+
+\titlespacing{\section}{0pt}{18pt}{20pt}
+\titlespacing{\subsection}{0pt}{18pt}{\wordsep}
+
+% Для работы шрифтов
+\usepackage{xunicode,xltxtra}
+
+% Для работы с русскими текстами (расстановки переносов, последовательность комманд строго обязательна)
+\usepackage{polyglossia}
+\setdefaultlanguage{russian}
+
+% Для того чтобы работали стандартные сочетания символов ---, --, << >> и т.п.
+\defaultfontfeatures{Mapping=tex-text} 
+
+% Шрифты
+\setmainfont{Times New Roman}
+\newfontfamily{\cyrillicfont}{Times New Roman}
+\newfontfamily{\cyrillicfontrm}{Times New Roman}
+\newfontfamily{\cyrillicfonttt}{Times New Roman}
+\newfontfamily{\cyrillicfontsf}{Times New Roman}
+
+% Отступы заголовков
+\ESKDsectSkip{section}{7mm}{7mm}
+\ESKDsectSkip{subsection}{5mm}{5mm}
+\ESKDsectSkip{subsubsection}{3mm}{3mm}
+
+% Для работы со сложными формулами
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Что бы использовать символ градуса (°) - \degree
+\usepackage{gensymb}
+
+% Для переноса составных слов
+\XeTeXcharclass `\- 24
+\XeTeXinterchartoks 24 0 ={\hskip\z@skip}
+\XeTeXinterchartoks 0 24 ={\nobreak}
+
+% Ставим подпись к рисункам. Вместо «рис. 1» будет «Рисунок 1»
+\addto{\captionsrussian}{\renewcommand{\figurename}{Рисунок}}
+% Убираем точки после цифр в заголовках
+\def\russian@capsformat{%
+  \def\postchapter{\@aftersepkern}%
+  \def\postsection{\@aftersepkern}%
+  \def\postsubsection{\@aftersepkern}%
+  \def\postsubsubsection{\@aftersepkern}%
+  \def\postparagraph{\@aftersepkern}%
+  \def\postsubparagraph{\@aftersepkern}%
+}
+
+% Автоматически переносить на след. строку слова которые не убираются в строке
+\sloppy
+
+% Для вставки рисунков
+\usepackage{graphicx}
+% Объявляем поддерживаемые форматы
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}
+
+% Настройка подписей: убираем пустую строку, ставим дефис как разделитель
+\usepackage[labelsep=endash]{caption}
+
+% Смещаем подпись к таблице влево
+\captionsetup[table]{singlelinecheck=false,justification=raggedright}
+
+
+% Используем расширенные таблицы (tabularx + longtable в одном)
+\usepackage{ltablex}
+
+% Выравниваем таблицы на всю ширину
+\keepXColumns
+
+% Для вставки интернет ссылок, полезно в библиографии
+\usepackage{url}
+
+% Подподразделы(\subsubsection) не выводим в содержании
+\setcounter{tocdepth}{2}
+
+% Каждый раздел (\section) с новой страницы
+\let\stdsection\section
+\renewcommand\section{\newpage\stdsection}
+
+% Бибилиография
+\usepackage[
+  backend=biber,
+  sorting=none,
+  style=gost-numeric
+]{biblatex}
+
+% улучшения 
+\usepackage[all]{nowidow}
+\usepackage{microtype}
+
+% содержание
+\makeatletter
+\renewcommand{\l@section}{\@dottedtocline{1}{4ex}{4ex}}
+\renewcommand{\l@subsection}{\@dottedtocline{1}{6ex}{6ex}}
+\makeatother

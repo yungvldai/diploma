@@ -1,0 +1,58 @@
+\newcommand{\No}{\textnumero}
+
+% Основные стили
+\input{lib/style.tex}
+
+% Полезные макросы
+\input{lib/macro.tex}
+
+% Загружаем заполнение штампа
+\input{lib/eskdx.tex}
+
+% Подключаем список источников
+\addbibresource{src/refs.bib}
+
+% путь до картинок
+\graphicspath{{media/}}
+
+\begin{document}
+
+\ESKDstyle{formII}
+
+%%% Делаем содержание
+\tableofcontents
+\clearpage
+
+\input{src/abb.tex}
+\clearpage
+
+\input{src/intro.tex}
+\clearpage
+
+\input{src/review.tex}
+\clearpage
+
+\input{src/functional.tex}
+\clearpage
+
+\input{src/design.tex}
+\clearpage
+
+\input{src/control_structure.tex}
+\clearpage
+
+\input{src/control_synthesis.tex}
+\clearpage
+
+\input{src/results.tex}
+\clearpage
+
+\input{src/conclusion.tex}
+\clearpage
+
+\sources
+\clearpage
+
+\input{src/apps.tex}
+
+\end{document}

@@ -1,0 +1,58 @@
+\newcommand{\sources}{%
+  \printbibliography[title={СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}]
+  \addcontentsline{toc}{section}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}
+}
+
+\newcommand{\abb}{%
+  \section*{Список сокращений и условных обозначений}
+  \addcontentsline{toc}{section}{СПИСОК СОКРАЩЕНИЙ И УСЛОВНЫХ ОБОЗНАЧЕНИЙ}
+}
+
+\newcommand{\intro}{%
+  \section*{Введение}
+  \addcontentsline{toc}{section}{ВВЕДЕНИЕ}
+}
+
+% Вставка заголовка 'Заключение'
+\newcommand{\conclusion}{%
+  \section*{Заключение}
+  \addcontentsline{toc}{section}{ЗАКЛЮЧЕНИЕ}
+}
+
+% Вставка картинки.
+% Пример: \insertimage[ширина]{файл_без_расширения}{Подпись}.
+% Ссылка на картинку в тексте: \ref{файл_без_расширения}
+\newcommand{\insertimage}[3][width=\textwidth]{%
+  \begin{figure}[!ht]%
+    \centering
+    \includegraphics[#1]{#2}%
+    \vspace{0.5cm}
+    \caption{#3}\label{#2}%
+  \end{figure}
+}
+
+% Вставка кода.
+% Пример: \begin{codewrap}[ширина]
+\newenvironment{codewrap}[1][1]{
+  \begin{figure}[!ht]
+    \centering
+    \begin{minipage}{#1\textwidth}
+}{
+    \end{minipage}
+  \end{figure}
+}
+
+% Вставка приложения.
+% Пример: \newapp{}
+\newcounter{coolappcounter}
+\newcommand{\newapp}[2]{%
+	\refstepcounter{coolappcounter}
+  \section*{ПРИЛОЖЕНИЕ \thecoolappcounter}\label{#1}
+  \addcontentsline{toc}{section}{ПРИЛОЖЕНИЕ \thecoolappcounter\ifblank{#2}{}{\ \ #2} }
+  \ifblank{#2}{}{%
+    \vspace*{-0.7cm}
+    \bfseries\centering{#2}\par
+  }
+  \normalfont
+}
+\renewcommand{\thecoolappcounter}{\Asbuk{coolappcounter}}

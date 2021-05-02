@@ -1,0 +1,23 @@
+{
+  "name": "diploma",
+  "version": "1.0.0",
+  "description": "Мой диплом",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "precompile": "mkdir -p ./document && mkdir -p ./build",
+    "compile": "command -v xelatex && xelatex -halt-on-error -interaction=nonstopmode -shell-escape -output-directory=build src/main.tex || ./scripts/show-error.sh \"Cannot find xelatex\"",
+    "bib": "command -v biber && biber build/main || ./scripts/show-error.sh \"Cannot find biber\"",
+    "clean": "rm -rf build && rm -rf document",
+    "build": "npm run compile && npm run bib && npm run compile && npm run compile && mv build/main.pdf document/production.pdf || ./scripts/show-error.sh \"Cannot build document\"",
+    "build-dev": "npm run compile && npm run bib && npm run compile && npm run compile && mv build/main.pdf document/development.pdf || ./scripts/show-error.sh \"Cannot build document\"",
+    "fast-rebuild": "npm run compile && mv build/main.pdf document/development.pdf || ./scripts/show-error.sh \"Cannot build document\"",
+    "watch": "npm run build && node ./watch/index.js"
+  },
+  "author": "Vlad Ivanov",
+  "license": "MIT",
+  "devDependencies": {
+    "node-watch-changes": "^2.0.3",
+    "chalk": "^4.1.0"
+  }
+}
