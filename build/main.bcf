@@ -3527,6 +3527,7 @@
     <bcf:citekey order="1">Машиноаппарат</bcf:citekey>
     <bcf:citekey order="2">БеленькийМикеровМоментныйПривод</bcf:citekey>
     <bcf:citekey order="3">Инжреш</bcf:citekey>
+    <bcf:citekey order="4">Магстанд</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
