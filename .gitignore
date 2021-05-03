@@ -26,3 +26,6 @@
 *.xdv
 *.synctex.gz
 *.fdb_latexmk
+
+node_modules/
+build/
