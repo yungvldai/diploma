@@ -17,4 +17,4 @@ NEW_TAG="$VNUM1.$VNUM2.$VNUM3"
 
 echo "New version: $NEW_TAG"
 
-git add . && git commit -m "Релиз от $(date +'%d %b %Y в %H:%M')" && git tag $NEW_TAG
+git add . && git commit -m "Релиз от $(date +'%d %b %Y в %H:%M')" && git tag $NEW_TAG && git push origin master && git push origin $NEW_TAG
