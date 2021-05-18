@@ -7,8 +7,8 @@
   "scripts": {
     "prerelease": "mkdir -p ./releases",
     "precompile": "mkdir -p ./document && mkdir -p ./build",
-    "compile": "command -v xelatex && xelatex -halt-on-error -interaction=nonstopmode -shell-escape -output-directory=build src/main.tex || ./scripts/show-error.sh \"Cannot find xelatex\"",
-    "bib": "command -v biber && biber build/main || ./scripts/show-error.sh \"Cannot find biber\"",
+    "compile": "command -v xelatex && xelatex -halt-on-error -interaction=nonstopmode -shell-escape -output-directory=build src/main.tex || ./scripts/show-error.sh \"Xelatex error!\"",
+    "bib": "command -v biber && biber build/main || ./scripts/show-error.sh \"Biber error!\"",
     "clean": "rm -rf build && rm -rf document",
     "build": "npm run compile && npm run bib && npm run compile && npm run compile && mv build/main.pdf document/production.pdf || ./scripts/show-error.sh \"Cannot build document\"",
     "build-dev": "npm run compile && npm run bib && npm run compile && npm run compile && mv build/main.pdf document/development.pdf || ./scripts/show-error.sh \"Cannot build document\"",
@@ -17,7 +17,7 @@
     "release": "npm run build && node ./releaser/index.js && ./scripts/release.sh"
   },
   "author": "Vlad Ivanov",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "devDependencies": {
     "chalk": "^4.1.0",
     "easy-pdf-merge": "^0.2.6",

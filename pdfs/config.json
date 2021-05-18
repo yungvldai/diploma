@@ -1,3 +1,3 @@
 {
-  "order": ["MAIN", "e2.pdf", "e3.pdf", "pcb.pdf"]
+  "order": ["task", "MAIN", "e2", "e3", "pcb"]
 }

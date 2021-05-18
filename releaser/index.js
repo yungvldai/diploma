@@ -59,7 +59,7 @@ const mergePdfs = (files, out) => {
         return paths.mainFile;
       }
 
-      return path.resolve(paths.pdfsFolder, name);
+      return path.resolve(paths.pdfsFolder, `${name}.pdf`);
     });
 
     await mergePdfs(files, paths.releaseOut);
