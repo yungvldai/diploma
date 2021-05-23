@@ -1,4 +1,8 @@
-# Установка
+# My diploma
+
+![Demo](media/done.jpeg)
+
+# Installing
 
 ```bash
 git clone https://github.com/yungvldai/diploma
@@ -6,14 +10,13 @@ cd diploma
 npm install
 ```
 
-Также понадобится java, xelatex и biber.
+java, xelatex and biber also needed.
 
-# Использование
+# Usage
 
- - `npm run build` собирает production версию пояснительной записки, включая обновление TOC, списка источников и ссылок;
- - `npm run build-dev` собирает development версию пояснительной записки;
- - `npm run watch` запускает наблюдатель, который следит за изменениями в папках `src/` и `lib/`, если произошло изменение
- запускается быстрая пересборка проекта (без TOC, ссылок и т. д.);
- - `npm run release` собирает документ, мержит все pdf (КД, титульники и другое) в один, делает коммит с датой,
- создает тег, пушит изменения и новый тег.
- - `npm run clean` очищает `build/` и `document/`. Использовать когда чето сломалось.
+ - `npm run build` builds production version of main document, including TOC, sources and references;
+ - `npm run build-dev` builds development version of main document only;
+ - `npm run watch` runs watcher, which observe changes in folders `src/` and `lib/`,
+ it runs `fast-rebuild` document if there is a change
+ - `npm run release` builds document, merges all of pdf, creates release commit and tag, then pushes to remote.
+ - `npm run clean` cleans `build/` and `document/`. Use in emergencies.

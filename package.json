@@ -1,7 +1,7 @@
 {
   "name": "diploma",
   "version": "1.0.0",
-  "description": "Мой диплом",
+  "description": "My diploma",
   "private": true,
   "main": "index.js",
   "scripts": {
