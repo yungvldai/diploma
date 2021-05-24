@@ -1,8 +1,14 @@
 # My diploma
 
-![Demo](media/done.jpeg)
+## Source code ![Source](https://img.shields.io/badge/language-C%2FC%2B%2B-blue)
 
-# Installing
+https://github.com/yungvldai/dbmc
+
+## Demo 
+
+<img src="media/done.jpeg" alt="demo" width="640"/>
+
+## Installing
 
 ```bash
 git clone https://github.com/yungvldai/diploma
@@ -12,7 +18,7 @@ npm install
 
 java, xelatex and biber are also needed.
 
-# Usage
+## Usage
 
  - `npm run build` builds production version of main document, including TOC, sources and references;
  - `npm run build-dev` builds development version of main document only;
